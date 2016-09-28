@@ -1,0 +1,42 @@
+<!DOCTYPE html><html><head>
+<title> new Image() load event </title>
+<style type="text/css">
+img, canvas{float:left; margin-right: 10px}
+</style>
+</head>
+<body>
+<p>There should be two blue squares on this page</p>
+<canvas id="canvas1" width="100" height="100"></canvas>
+
+<script>
+
+        function loadCanvas(dataURL) {
+            var canvas = document.getElementById('canvas1');
+            var context = canvas.getContext('2d');
+
+            // load image from data url
+            var imageObj = new Image();
+            imageObj.onerror = function(){
+                console.log('imageObj error :-/');
+            }
+            imageObj.onload = function() {
+                console.log('img onload');
+              context.drawImage(this, 0, 0);
+            };
+            console.log('setting src');
+            imageObj.src = dataURL;
+        }
+        // make ajax call to get image data url
+        var request = new XMLHttpRequest();
+        console.log('request ' + request)
+        request.open('GET', '../support/overlap-blue-dataurl.svg', false);
+
+        request.send();
+        console.log('sent, got ' + request.responseText.length + ' chars');
+        loadCanvas(request.responseText);
+   </script>
+
+<img src="../support/overlap-blue.svg" width="100" height="100" onload="console.log('IMG loaded!')" onerror="console.log('IMG error')">
+
+</body>
+</html>
