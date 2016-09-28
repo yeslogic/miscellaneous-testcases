@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head>
+<title>Stacking of absolutely positioned IMG with negative z-index</title>
+
+<style>
+/*
+* This test is meant to verify the z-index stacking of a positioned img
+* and the background of a subsequent element.
+*/
+html, body{ margin: 0, padding: 0;}
+
+.icon-bg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: 3em;
+    width: 140%;
+    z-index: -1000;
+}
+
+.potential-num {
+    padding: 20mm;
+    background-color: #0a0;
+    color: #fff;
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<p>You should see a block of white text on green background below:</p>
+
+        <img class="icon-bg" src="../support/overlap-white.svg" />
+
+
+            <div style="height:200px">&nbsp;</div>
+
+            <div class="potential-num"><div>This text should have a green background</div></div>
+
+</body>
+</html>
