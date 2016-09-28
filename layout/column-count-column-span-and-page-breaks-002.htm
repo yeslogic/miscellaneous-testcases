@@ -1,0 +1,54 @@
+<!doctype HTML>
+<html>
+
+    <head>
+        <title>Column Span Test 2</title>
+        <link rel="help" href="http://www.princexml.com/forum/topic/3310/intentional-page-break-and-column-span-leads-to-multiple">
+<style>
+    article {
+        column-count: 2;
+    }
+
+    section {
+        page-break-before: always;
+    }
+
+    .column-span-all {
+        column-span: all;
+        background-color: #ccc;
+    }
+    body{ font-size: 1.8em;}
+</style>
+
+</head>
+
+<body>
+
+    This introductory text should use the entire page width. After this paragraph there should be a page break.
+
+    <article>
+
+        <section>
+
+        This text should appear on page two and be split across two columns. There should be <b>no page break</b> after this text, but the next paragraph should span both columns.
+
+            <div class="column-span-all">
+                This text should span two columns. It should have a grey background. There should not be any page breaks before or after this grey box.
+            </div>
+
+        This text should also span two columns. For most page and text sizes, this text should also be set on page two of this document. Below this text should be another grey box with content spanning two columns. There should not be any page breaks between this text and the following grey box unless one is required because we are about to overflow the page. Page breaks within this text or within the grey box are permitted if they are necessary.
+
+            <div class="column-span-all">
+                So here's another grey box which is expected to span two columns, using the full width of the page except margins. Again, we don't expect any page breaks before or after this grey box.
+            </div>
+
+        Here is some more text set in two columns. There should be no page break above this text (unless required due to overflow) but a page break is expected below it. The next paragraph shall be on a separate page.
+        </section>
+
+        <section>
+            This paragraph, split across its two columns, should be the only contents on the last page of this document. This document should be approximately three pages long, certainly no longer than four pages.
+        </section>
+
+    </article>
+</body>
+</html>

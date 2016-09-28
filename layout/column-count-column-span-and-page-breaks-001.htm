@@ -1,0 +1,58 @@
+<!doctype HTML>
+<html>
+
+    <head>
+        <title>Column Span Test</title>
+        <style type="text/css">
+            .outerContainer {
+                column-count: 2;
+            }
+
+            .innerContainer > h1 {
+                column-span: all;
+            }
+
+            .innerContainer.third {
+                page-break-before: always;
+            }
+        </style>
+        <link rel="help" href="http://www.princexml.com/forum/topic/3310/intentional-page-break-and-column-span-leads-to-multiple">
+    </head>
+
+    <body>
+        <div class="outerContainer">
+            <div class="innerContainer first">
+                <h1>This header should span two columns</h1>
+                <div class="content">
+                    This text should appear in the left column on the first page. This document should have two pages in total.
+                </div>
+            </div>
+
+            <div class="innerContainer second">
+                <div class="content">
+                    This text should appear in the right column on the first page. This should be the last text on this page before a page break.
+                </div>
+            </div>
+
+            <div class="innerContainer third">
+                <h1>This header should appear on the second page and span two columns</h1>
+                <div class="content">
+                    This text should appear in the left column on the second page.
+                </div>
+                <div class="content">
+                    This text should appear in the right column on the second page.
+                </div>
+            </div>
+
+            <div class="innerContainer fourth">
+                <h1>This should be the second header on page two, it should span two columns</h1>
+                <div class="content">
+                    This text should appear in the left column on the second page, after the second header.
+                </div>
+                <div class="content">
+                    This text should appear in the right column on the second page, after the second header.
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
