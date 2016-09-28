@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html><head>
+    <title>Highchart splashArray() function</title>
+</head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <script>
+        function splashArray() {
+            var c = [c, c, c, c];
+            return [c[0], c[1], c[2], c[3]];
+        }
+        var ar = splashArray();
+        var failures = [];
+        ar.length === 4 || failures.push('Length check failed');
+        ar instanceof Array || failures.push('instanceof check failed');
+        (ar[0] === undefined &&
+            ar[1] === undefined &&
+            ar[2] === undefined &&
+            ar[3] === undefined) || failures.push('Values check failed');
+        (('0' in ar) && ('1' in ar) &&
+            ('2' in ar) && ('3' in ar) && ! ('4' in ar)) || failures.push('in check failed');
+
+        Object.prototype.toString.call(ar) === '[object Array]' || failures.push('Stringification check failed');
+
+        document.getElementsByTagName('p')[0].firstChild.data = failures.length === 0 ? 'PASSED' : 'FAILED - ' + failures.join('. ');
+
+    </script>
+</body>
+</html>

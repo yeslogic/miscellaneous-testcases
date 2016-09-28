@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html><head>
+    <title>Highchart splashArray() function - object variant</title>
+</head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <script>
+        function splashObject() {
+            var c = {a:c, b:c};
+            return c;
+        }
+        var obj = splashObject();
+        var failures = [];
+        obj.a === undefined && obj.b === undefined || failures.push('Values check failed');
+        obj['a'] === undefined && obj['b'] === undefined || failures.push('Values check failed (bracket notation)');
+        (('a' in obj) && ('b' in obj) && ! ('c' in obj)) || failures.push('in check failed');
+
+        document.getElementsByTagName('p')[0].firstChild.data = failures.length === 0 ? 'PASSED' : 'FAILED - ' + failures.join('. ');
+
+    </script>
+</body>
+</html>
