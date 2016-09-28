@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>using positioning to place content at bottom of TD</title>
+        <link rel="help" href="http://www.princexml.com/forum/topic/3429/table-cell-child-absolute-positioning-bug">
+        <style>
+            table {
+                width: 400px;
+            }
+            td {
+                position: relative;
+                border: 1px solid black;
+                width: 50%;
+                vertical-align: top;
+                padding: 10px;
+                padding-bottom: 4em;
+                box-sizing: border-box;
+            }
+            .bottom-absolute {
+                position: absolute;
+                bottom: 0; width: 100%;
+                font-size: 60%;
+                color: #555;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        This is some short content.
+                        <div class="bottom-absolute">This text should appear at the bottom of the table cell, and be wrapped to two lines.</div>
+                    </td>
+                    <td>
+                        This is some rather longer content that has some florid descriptions of something, perhaps with many run-on sentences and so forth and so on.
+                        <div class="bottom-absolute">This text be at the bottom of the table cell.</div>
+                    </td>
+                <tr>
+            </tbody>
+        </table>
+    </body>
+</html>
