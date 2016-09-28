@@ -1,0 +1,53 @@
+<!DOCTYPE html><html class="nojs"><head>
+
+<title>Number toPrecision</title>
+<style>
+.pass{background-color:darkgreen; width:100%; height:100%; color: #fff;}
+.pass p{content:"PASSED";}
+.fail{background-color:red; width:100%; height:100%; color: #fff; white-space: pre;}
+.nojs p{content:"FAILED (script did not run)";}
+</style>
+</head>
+<body>
+<p></p>
+<script>
+var passed = !! Number.prototype.toPrecision;
+var failures = [];
+if(passed) {
+    var n1 = 10, n2 = -5.896, n3 = 0.352214336;
+    var tests = [
+        {base: 5, precision:  3, expected: '5.00'},
+        {base: n1, precision: 8, expected: '10.000000'},
+        {base: n1, precision: 2, expected: '10'},
+        {base: n2, precision: 1, expected: '-6'},
+        {base: n2, precision: 2, expected: '-5.9'},
+        {base: n2, precision: 3, expected: '-5.90'},
+        {base: n2, precision: 4, expected: '-5.896'},
+        {base: n2, precision: 5, expected: '-5.8960'},
+        {base: n3, precision: 5, expected: '0.35221'},
+        {base: n3, precision: 2, expected: '0.35'},
+        {base: 0, precision: 4, expected: '0.000'},
+        {base: -0, precision: 4, expected: '0.000'},
+        {base: 1000, precision: 1, expected: '1e+3'},
+        {base: -500, precision: 1, expected: '-5e+2'},
+        /* some oddities.. */
+        /* ECMAScript spec: if precision is undefined, stringify number */
+        {base: 15.3, precision: undefined , expected: '15.3'},
+        /* Only integer part of precision is used */
+        {base: 15.3, precision: 4.54, expected: '15.30'},
+        /* NaN gets stringified  */
+        {base: ''/'', precision: 6, expected: 'NaN'}
+    ];
+    tests.forEach(function(test){
+        var result = test.base.toPrecision(test.precision);
+        result === test.expected || failures.push('(' + test.base + ').toPrecision(' + test.precision + ') result was ' + result + ', expected ' + test.expected);
+    });
+} else {
+    failures.push('toPrecision is not supported');
+}
+document.documentElement.className = passed && failures.length === 0 ? 'pass' : 'fail';
+document.getElementsByTagName('p')[0].appendChild(document.createTextNode(failures.join('.\n')));
+</script>
+
+</body>
+</html>
