@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head>
+<title>Top left background, scaled</title>
+
+<link rel="help" href="https://www.princexml.com/forum/topic/3466/how-to-place-the-logo-on-top-left-in-all-screens">
+
+<style>
+/*
+* This tests that background-size causes proportional resizing of
+* a @top-left background image to the dimension set by @page margin-top
+* even when there is @page @top-right content
+*/
+@page {
+    margin-top: 1cm;
+    margin-bottom: 2cm;
+    margin-left: 2cm;
+    margin-right: 2.5cm;
+    @top-left {
+        content :'';
+        background-image:url('../support/green-160x160.jpg');
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+    }
+ @top-right {
+  content: '\00a0';
+ }
+}
+</style>
+</head>
+
+<body>
+
+<p>There should be a 1cm x 1cm green square above, aligned with the start of this sentence.</p>
+
+
+</body>
+</html>
