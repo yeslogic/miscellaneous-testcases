@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head>
+
+<title>Page cover as background-image, scaled and centered with background</title>
+<style type="text/css">
+@page a5 {
+  size: A5 landscape;
+  margin: 0;
+}
+
+.a5{
+  page: a5;
+  margin: 0;
+  page-break-after: always;
+}
+.a5 div{
+  background-color: #ccc;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  background-image: url(../support/blue-rect-200x1200.png);
+  background-repeat: no-repeat;
+  background-size: auto 75%;
+  background-position: center;
+}
+
+  .a5 p{
+    position: fixed;
+    left: 4%;
+    width: 30%;
+    z-index: 1;
+  }
+
+</style></head>
+<body>
+    <div class="a5">
+        <div><p>This page should be grey, with no margin. There should be a blue rectangle with white content centered vertically and horizontally. The rectangle should be 111mm tall and 18,5mm wide. This should be the first page of a two-page document.</p></div>
+    </div>
+    <div class="a5">
+        <p>This page should be white with no contents except for this paragraph.</p>
+    </div>
+</body>
+</html>
