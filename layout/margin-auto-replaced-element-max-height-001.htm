@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head>
+
+<title>Page cover test: proportionally resizing replaced element with auto left/right margins and max-height</title>
+
+<link rel="help" href="http://www.princexml.com/forum/topic/2291/specify-a-page-filling-cover-image">
+
+<style type="text/css">
+chapter#cover {
+  page: chapter-cover;
+  display: block;
+  height: 148mm;
+}
+chapter#cover p{ /* Explanatory text, removed from normal flow */
+  position: fixed;
+  left: 4%;
+  width: 30%;
+}
+chapter#cover div{
+  margin-right: auto;
+  margin-left: auto;
+  max-height: 100%; /* Should cause a proportional resize of the replaced element, maximum 100% of the chapter#cover's height */
+  content: url("../support/blue-rect-200x1200.png");
+}
+@page chapter-cover {
+  size: A5 landscape;
+  margin: 0;
+}
+</style>
+</head>
+<body>
+    <chapter id="cover">
+        <p>There should be a blue rectangle horizontally centered on this page. It should stretch from top to bottom, not cropped.</p>
+        <div>FAILED - element not replaced by image</div>
+    </chapter>
+
+</body>
+</html>

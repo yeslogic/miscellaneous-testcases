@@ -1,0 +1,31 @@
+<!DOCTYPE html><html>
+<head><title>using background-position and background-size to scale and center image</title>
+
+<link rel="help" href="http://www.princexml.com/forum/topic/2291/specify-a-page-filling-cover-image">
+
+<style type="text/css">
+p{ /* Explanatory text, removed from normal flow */
+  position: fixed;
+  left: 4%;
+  width: 30%;
+  z-index: 1;
+}
+.page_background{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-image: url(../support/blue-rect-200x1200.png);
+    background-repeat: no-repeat;
+    background-size: auto 12cm;
+    background-position: center;
+}
+</style>
+</head>
+
+<body>
+
+    <p>There should be a blue rectangle horizontally and vertically centered on this page. It should be 12cm tall and 2cm wide.</p>
+    <div class="page_background"></div>
+
+</body>
+</html>
