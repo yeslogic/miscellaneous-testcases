@@ -34,11 +34,10 @@
         width: 40%; /* this + margins = horizontal centering of the table-cell's box */
         margin-right: auto;
         margin-left: auto;
-        height: 100%;
     }
     div.cover img {
-        max-height: 65%;
-        max-width: 80%;
+        max-height: 180mm; /* hard-coded max-height because percentages won't work in a table-cell context */
+        display: inline-block; /* inline-block to make both the text-align and max-height work */
     }
     div#c1 img{
         content: url("../support/blue-rect-200x1200.png");
@@ -49,6 +48,7 @@
     }
     div#c1 p#expected{ /* Explanatory text, removed from normal flow */
       position: fixed;
+      display: block;
       left: 2%;
       width: 28%;
       text-align: justify;
