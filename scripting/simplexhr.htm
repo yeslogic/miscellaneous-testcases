@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head><title>Simple async XHR call</title></head>
+<body>
+<p>FAIL: Script did not run</p>
+<script>
+
+function doXHR(){
+    var x = new XMLHttpRequest();
+    x.open('GET', '../support/data.txt', true);
+    x.onreadystatechange = function(){
+        if(x.readyState === 4) {
+            document.getElementsByTagName('p')[0].firstChild.data = 'Number of completed requests: 1';
+            var passed = x.responseText === 'Lorem ipsum dolor sit amet'
+            document.getElementsByTagName('p')[0].firstChild.data += passed ? ' PASS' : ' FAIL';
+        }
+    }
+    x.send();
+}
+doXHR();
+</script>
+</body>
+</html>
