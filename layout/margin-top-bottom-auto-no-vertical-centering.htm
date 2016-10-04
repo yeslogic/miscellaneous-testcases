@@ -1,0 +1,39 @@
+<!DOCTYPE html><html>
+<head><title>margin-top/bottom:auto will not center elements vertically</title>
+
+<link rel="help" href="http://www.princexml.com/forum/topic/2291/specify-a-page-filling-cover-image">
+
+<style type="text/css">
+/*
+* This is a negative test, checking that setting
+* margin-top/bottom explicitly to auto has no effect.
+*/
+
+.outer{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+div{
+    border: thin solid grey;
+}
+.inner{
+    background-color: #ccc;
+    height: 200px;
+    width:300px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="outer">
+    <div class="inner">This text should be inside a grey box which should be centered horizontally and touch the top edge of the outer box.</div>
+</div>
+
+</body>
+</html>

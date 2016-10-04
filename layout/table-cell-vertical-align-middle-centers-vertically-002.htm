@@ -1,0 +1,117 @@
+<!DOCTYPE html><html><head>
+<title>Fixed positioning for chapter cover pages</title>
+
+<link rel="help" href="http://www.princexml.com/forum/topic/2291/specify-a-page-filling-cover-image">
+
+<style type="text/css">
+
+    div.cover {
+        page: cover;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        page-break-after: always;
+        page-break-before: always;
+        page-break-inside: avoid;
+    }
+    section{
+        counter-increment: chapter;
+    }
+    div.cover span{
+        content: "Chapter " counter(chapter);
+        font-size: 2em;
+        color: #009;
+        position: fixed;
+        transform: rotate(90deg);
+        left: 39%;
+        top: 25%;
+        z-index: 10;
+    }
+    div.cover p {
+        display: table-cell; /* simplifies vertical centering */
+        vertical-align: middle; /* vertical centering of contents */
+        text-align: center; /* horizontal centering of inline content */
+        width: 40%; /* this + margins = horizontal centering of the table-cell's box */
+        margin-right: auto;
+        margin-left: auto;
+    }
+    div.cover img {
+        max-height: 180mm; /* hard-coded max-height because percentages won't work in a table-cell context */
+        display: inline-block; /* inline-block to make both the text-align and max-height work */
+    }
+    div#c1 img{
+        content: url("../support/blue-rect-200x1200.png");
+        height: 40%;
+    }
+    div#c2 img{
+        content: url("../support/green-160x160.jpg");
+    }
+    div#c1 p#expected{ /* Explanatory text, removed from normal flow */
+      position: fixed;
+      display: block;
+      left: 2%;
+      width: 28%;
+      text-align: justify;
+    }
+@page{
+    size: a5 portrait;
+    margin: 2cm;
+}
+@page cover{
+    margin:0;
+}
+
+</style>
+</head>
+<body>
+<section>
+
+    <div class="cover" id="c1">
+        <p id="expected">
+            This should be a four-page document, 1st and 3rd page should have graphics and chapter titles. 1st page should have a blue rectangle, centered vertically and horizontally. Inside the rectangle you should see the text "Chapter 1" written vertically top-bottom. The rectangle should be scaled, not cropped. 3rd page should have a green square, centered vertically and horizontally. Above it you should see the text "Chapter 2" written vertically.
+        </p>
+        <span></span>
+        <p>
+            <img>
+        </p>
+    </div>
+
+    <h1>Lorem ipsum</h1>
+
+    <p>Consequatur illo quisquam debitis. Dignissimos repellendus consectetur ipsam quia ab. Asperiores iusto repudiandae placeat. Quis rerum impedit voluptatum sunt.</p>
+
+    <p>Nihil consequatur est nam recusandae. Soluta eos ut consequatur illum sit. Tempore aut placeat sed ad. Accusamus exercitationem reprehenderit ratione est aliquam. Adipisci facere laudantium ad incidunt nihil consequatur.</p>
+
+    <p>Nobis tempora repellat vel molestias dolorem deserunt necessitatibus. Quia incidunt possimus placeat labore voluptas cupiditate architecto soluta. Ullam qui officiis sed placeat. Nemo labore quia reprehenderit vel optio facere nesciunt. Consequatur dicta magnam omnis eum exercitationem ex consectetur.</p>
+
+    <p>Quasi illo dolores incidunt eius molestiae culpa recusandae. Eum architecto reiciendis officia voluptatem iure. Ut mollitia rem aut quasi. Dolorum architecto quos perferendis temporibus sint deleniti.</p>
+
+    <p>Facere quis sunt dolore quia reprehenderit omnis. Voluptatem vero sit laborum sunt aliquam voluptas dignissimos. Non dignissimos et eum voluptatem rerum. Et a consequuntur possimus aut earum enim eaque reiciendis. Dignissimos temporibus ea doloribus et voluptas repudiandae rerum.</p>
+
+
+</section>
+
+<section>
+
+    <div class="cover" id="c2">
+        <span></span>
+        <p>
+            <img>
+        </p>
+    </div>
+
+    <h1>Lorem ipsum</h1>
+
+    <p>Consequatur illo quisquam debitis. Dignissimos repellendus consectetur ipsam quia ab. Asperiores iusto repudiandae placeat. Quis rerum impedit voluptatum sunt.</p>
+
+    <p>Nihil consequatur est nam recusandae. Soluta eos ut consequatur illum sit. Tempore aut placeat sed ad. Accusamus exercitationem reprehenderit ratione est aliquam. Adipisci facere laudantium ad incidunt nihil consequatur.</p>
+
+    <p>Nobis tempora repellat vel molestias dolorem deserunt necessitatibus. Quia incidunt possimus placeat labore voluptas cupiditate architecto soluta. Ullam qui officiis sed placeat. Nemo labore quia reprehenderit vel optio facere nesciunt. Consequatur dicta magnam omnis eum exercitationem ex consectetur.</p>
+
+    <p>Quasi illo dolores incidunt eius molestiae culpa recusandae. Eum architecto reiciendis officia voluptatem iure. Ut mollitia rem aut quasi. Dolorum architecto quos perferendis temporibus sint deleniti.</p>
+
+    <p>Facere quis sunt dolore quia reprehenderit omnis. Voluptatem vero sit laborum sunt aliquam voluptas dignissimos. Non dignissimos et eum voluptatem rerum. Et a consequuntur possimus aut earum enim eaque reiciendis. Dignissimos temporibus ea doloribus et voluptas repudiandae rerum.</p>
+</section>
+
+</body>
+</html>
