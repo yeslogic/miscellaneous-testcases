@@ -1,0 +1,56 @@
+<!DOCTYPE html><html class="nojs"><head>
+
+<title>ArrayBuffer, XHR and instanceof</title>
+<style>
+.pass{background-color:darkgreen; width:100%; height:100%; color: #fff;}
+.pass p{content:"PASSED";}
+.fail{background-color:red; width:100%; height:100%; color: #fff; white-space: pre;}
+.nojs p{content:"FAILED (script did not run)";}
+</style>
+</head>
+<body>
+<p></p>
+<script>
+var failures = [];
+var buf = new ArrayBuffer(8), undefBuf, xhrBuf;
+var xhr = new XMLHttpRequest();
+xhr.responseType = 'arraybuffer';
+xhr.open('GET', '../support/data.txt', true);
+xhr.onreadystatechange = function() {
+    if(xhr.readyState === 4) {
+        completeTest();
+    }
+}
+try {
+    xhr.send();
+} catch(e) {
+    failures.push('Throws when calling xhr.send()');
+    completeTest();
+}
+
+function completeTest(){
+    try {
+        xhr.responseType === 'arraybuffer' || failures.push('xhr.responseType is ' + xhr.responseType + ', expected "arraybuffer"');
+    } catch(e) {
+        failures.push('Throws when reading xhr.responseType');
+    }
+    try {
+        xhrBuf = xhr.response;
+    } catch(e) {
+        failures.push('Throws when reading xhr.response');
+    }
+    try {
+        buf instanceof ArrayBuffer || failures.push('buf is not instanceof ArrayBuffer');
+        xhrBuf instanceof ArrayBuffer || failures.push('xhrBuf is not instanceof ArrayBuffer');
+        undefBuf instanceof ArrayBuffer && failures.push('undefined variable is instanceof ArrayBuffer');
+    } catch(e) {
+        failures.push('instanceof throws error ' + e);
+    }
+    document.documentElement.className = failures.length === 0 ? 'pass' : 'fail';
+    document.getElementsByTagName('p')[0].appendChild(document.createTextNode(failures.join('.\n')));
+}
+
+</script>
+
+</body>
+</html>
