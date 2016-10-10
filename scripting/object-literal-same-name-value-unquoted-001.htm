@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head>
+  <title> object literals with {variableName:variableName} </title></head>
+<body>
+<p>FAILED (script did not run)</p>
+<script>
+var greeting = 'yay';
+var slang1 = {greeting:greeting};
+
+function test(greeting){
+    return {
+        greeting: greeting
+    }
+}
+var slang2 = test('hiya');
+</script>
+<script>
+    document.getElementsByTagName('p')[0].firstChild.data = slang1 && slang1.greeting === 'yay' && slang2 && slang2.greeting === 'hiya' ? 'PASSED' : 'FAILED';
+</script>
+</body>
+</html>
