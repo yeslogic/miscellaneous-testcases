@@ -1,0 +1,27 @@
+<!DOCTYPE html><html><head><title>document.implementation.createHTMLDocument()</title>
+<link rel="help" href="http://www.princexml.com/forum/topic/3483/jquery-and-windows-10">
+</head>
+<body>
+<p>FAILED (script did not run)</p>
+<script>
+var failures = [];
+
+(document.implementation && document.implementation.createHTMLDocument) || failures.push('The createHTMLDocument() method is not supported');
+
+if(!failures.length) {
+    var doc = document.implementation.createHTMLDocument('My doc');
+    doc.documentElement.tagName === 'HTML' || failures.push('documentElement.tagName is ' + doc.documentElement.tagName + ', expected "HTML"');
+    doc.title === 'My doc' || failures.push('Title argument should be reflected in document.title');
+    doc instanceof HTMLDocument || failures.push('Created document should be instanceof HTMLDocument');
+    var tags = doc.getElementsByTagName('*');
+    tags.length === 4 && tags[0].tagName === 'HTML'
+        && tags[1].tagName === 'HEAD' && tags[2].tagName === 'TITLE'
+        && tags[3].tagName === 'BODY' || failures.push('Created document should contain HTML, HEAD, TITLE and BODY tags');
+}
+
+document.getElementsByTagName('p')[0].firstChild.data = failures.length === 0 ? 'PASS ' : 'FAIL ';
+document.getElementsByTagName('p')[0].appendChild(document.createTextNode(failures.join('.\n')));
+
+</script>
+</body>
+</html>
