@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Pagination and tall DIVs with float:left</title>
+    <link rel="help" href="http://www.princexml.com/forum/topic/3449/unexpected-pagination-with-large-floated-divs">
+    <style>
+      .problem { page-break-inside: auto; width: 100%; float: left;  }
+      p { border: 1px solid #aaaaaa; }
+      #problem-1 .part { page-break-inside: avoid; height: 500px; border: thin solid black; }
+      #problem-2 .part { page-break-inside: avoid; height: 500px; border: thin solid black; }
+    </style>
+  </head>
+  <body>
+    <p>In this document, the boxes 1a-1c should <i>precede</i> the text "Chapter 2"</p>
+
+  <div id='problem-1' class='problem'>
+    <p>Chapter 1</p>
+    <div class='part'>1a</div>
+    <div class='part'>1b</div>
+    <div class='part'>1c</div>
+  </div>
+
+  <div id='problem-2' class='problem'>
+    <p>Chapter 2</p>
+    <div class='part'>2a</div>
+    <div class='part'>2b</div>
+    <div class='part'>2c</div>
+  </div>
+
+  </body>
+</html>
