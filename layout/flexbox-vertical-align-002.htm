@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <title>Flexbox Vertical Align Example II - tall container element, vertical align center</title>
+    <link rel="help" href="http://www.princexml.com/forum/topic/2132/css-flexbox-support">
+    <style type="text/css">
+
+      .flex-container-1 {
+        display: flex;
+        flex-direction: column;
+        background-color: #ccc;
+        height: 58cm;
+        padding: 20px;
+      }
+
+      .flex-container-1 div {
+        background-color: white;
+        border: 1px solid #999;
+        padding: 10px;
+      }
+
+      .flex-container-1 {
+        justify-content: center;
+      }
+
+      /*
+      * Maybe: split container across pages, then center boxes by the complete height, but shifted down/up if they would otherwise collide with a page split/margins?
+      */
+
+    </style>
+  <body>
+    <p>The three boxes below should be centered vertically</p>
+    <div class="flex-container-1">
+      <div>Item 1</div>
+      <div>Item 2</div>
+      <div>Item 3</div>
+    </div>
+
+
+</body></html>

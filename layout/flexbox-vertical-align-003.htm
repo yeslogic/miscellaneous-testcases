@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <title>Flexbox Vertical Align Example III - tall container, two top and one bottom aligned flex item</title>
+    <link rel="help" href="http://www.princexml.com/forum/topic/2132/css-flexbox-support">
+    <style type="text/css">
+
+      .flex-container-2 {
+        display: flex;
+        flex-direction: column;
+        background-color: #ccc;
+        height: 58cm;
+        padding: 20px;
+      }
+
+      .flex-container-2 div {
+        background-color: white;
+        border: 1px solid #999;
+        padding: 10px;
+      }
+
+      .flex-container-2 div:last-child {
+        margin-top: auto;
+      }
+
+    </style>
+  <body>
+    <p>Two boxes below should be stacked vertically at the top, the third should be at the bottom of its container</p>
+    <div class="flex-container-2">
+      <div>Item 1</div>
+      <div>Item 2</div>
+      <div>Item 3</div>
+    </div>
+
+
+</body></html>
