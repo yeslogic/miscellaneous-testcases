@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html><head>
+<title>floating list-items inside floating inline-block elements</title>
+<link rel="help" href="http://www.princexml.com/forum/topic/3490/auto-shrink-and-formatting-issue">
+<style>
+ul{list-style: none;}
+ul, div{margin: 0; padding: 0; text-align: left;}
+li{position: relative; float:left; white-space: pre}
+div{display: inline-block;float: left;}
+</style>
+</head>
+<body>
+<div class="left">
+    <ul>
+      <li>This </li>
+      <li>should </li>
+      <li>be </li>
+  </ul>
+</div>
+<div class="left">
+    <ul>
+      <li>on </li>
+      <li>one </li>
+      <li>line </li>
+    </ul>
+</body>
+</html>

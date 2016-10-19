@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html><head>
+<title> print style or screen style? </title>
+<style>
+@media print and (min-width:16px) {
+    body p.p{content: "Print styles applied!"}
+}
+@media screen and (min-width:16px) {
+    body p.s{content: "Screen styles applied!"}
+}
+@media all and (min-width:16px) {
+    body p.a{content: "'All' styles applied!"}
+}
+</style>
+</head>
+<body>
+<p class="p">Print styles not applied</p>
+<p class="s">Screen styles not applied</p>
+<p class="a">'All' styles not applied</p>
+</body>
+</html>
