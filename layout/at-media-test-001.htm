@@ -3,19 +3,20 @@
 <title> print style or screen style? </title>
 <style>
 @media print and (min-width:16px) {
-    body p.p{content: "Print styles applied!"}
+    body p.p{content: "PASSED - print styles applied!"}
 }
 @media screen and (min-width:16px) {
-    body p.s{content: "Screen styles applied!"}
+    body p.s{content: "FAILED - screen styles applied!"}
 }
 @media all and (min-width:16px) {
-    body p.a{content: "'All' styles applied!"}
+    body p.a{content: "PASSED - 'all' styles applied!"}
 }
 </style>
 </head>
 <body>
-<p class="p">Print styles not applied</p>
-<p class="s">Screen styles not applied</p>
-<p class="a">'All' styles not applied</p>
+<p>You should see three lines saying passed below:</p>
+<p class="p">FAILED - print styles not applied</p>
+<p class="s">PASSED - screen styles not applied</p>
+<p class="a">FAILED - 'all' styles not applied</p>
 </body>
 </html>
