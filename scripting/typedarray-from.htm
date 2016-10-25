@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head>
+<title>TypedArray.from</title>
+<style>p{white-space: pre}</style>
+</head>
+<body>
+<p>FAILED (script did not run)</p>
+<script>
+var failures = [];
+// leaving out unsupported Float32Array, Float64Array
+var constructors = ['Int8Array', 'Uint8Array', 'Uint8ClampedArray', 'Int16Array', 'Uint16Array', 'Int32Array', 'Uint32Array'];
+constructors.forEach(function(cs){
+    var typedArrayConstr = window[cs];
+    ('from' in typedArrayConstr) || failures.push('The from() method is not defined on ' + cs);
+    try{
+        var typedAr = new typedArrayConstr([]);
+    }catch(e){
+        failures.push(cs + ' TypedArray constructor throws when input is an array object');
+    }
+});
+
+document.getElementsByTagName('p')[0].firstChild.data = failures.length ? 'FAILED\n' + failures.join('\n') : 'PASSED';
+</script>
+</body>
+</html>
