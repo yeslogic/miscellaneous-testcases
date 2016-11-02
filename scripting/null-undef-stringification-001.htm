@@ -1,0 +1,16 @@
+<!DOCTYPE html><html><head>
+<title>implicit stringification of null/undefined</title></head>
+<body>
+<p>FAILED (script did not run)</p>
+<script>
+var a = null, b;
+try{
+    var c = ' ' + a;
+    var d = ' ' + b;
+    document.getElementsByTagName('p')[0].firstChild.data = c === ' null' && d === ' undefined' ? 'PASSED' : 'FAILED ';
+}catch(e){
+    document.getElementsByTagName('p')[0].firstChild.data = 'FAILED with exception ' + e;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head>
+<title>implicit stringification of unset (null char) values in TypedArray</title></head>
+<body>
+<p>FAILED (script did not run)</p>
+<script>
+var buffer = new ArrayBuffer(4);
+var view = new Uint8Array(buffer);
+
+try{
+    var str = '';
+    for(var i = 0; i < view.length; i++){
+        str += view[i] + ',';
+    }
+    var passed = str === '0,0,0,0,';
+    document.getElementsByTagName('p')[0].firstChild.data = passed ? 'PASSED' : 'FAILED -got ' + str;
+}catch(e){
+    document.getElementsByTagName('p')[0].firstChild.data = 'FAILED with exception ' + e;
+}
+</script>
+</body>
+</html>
