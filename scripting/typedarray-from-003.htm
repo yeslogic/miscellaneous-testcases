@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head>
+<title>TypedArray with ArrayBuffer inputs</title>
+<style>p{white-space: pre}</style>
+</head>
+<body>
+<p>FAILED (script did not run)</p>
+<script>
+
+var failures = [];
+// leaving out unsupported Float32Array, Float64Array
+var constructors = ['Int8Array', 'Uint8Array', 'Uint8ClampedArray', 'Int16Array', 'Uint16Array', 'Int32Array', 'Uint32Array'];
+var inputs = [
+    /* 8-bit constructors */
+    [0x00, 0x12, 0xff],[0x00, 0x12, 0xff],[0x00, 0x12, 0xff],
+    /* 16-bit constructors */
+    [0x0000, 0x1201, 0xffff, 0x1212],[0x0000, 0x1202, 0xffFF, 0x5d2e],
+    /* 32-bit constructors */
+    [0x00000000, 0x12121212, 0xffffffff, 0xffffffff],[0x00000000, 0x12121212, 0xffffffff, 0xffffffff]];
+
+constructors.forEach(function(cs){
+    var typedArrayConstr = window[cs];
+    console.log(cs + ' ' + typedArrayConstr)
+    var sourceData = inputs.shift();
+    var buffer = new ArrayBuffer(sourceData.length);
+    try{
+        var typedAr = new typedArrayConstr(buffer);
+        for(var i = 0; i < sourceData.length; i++){
+            typedAr[i] = sourceData[i];
+        }
+        var expectedLength = typedAr.length;
+        if(cs.indexOf(16) > -1){
+            expectedLength *= 2;
+        } else if(cs.indexOf(32) > -1){
+            expectedLength *= 4;
+        }
+
+        buffer.byteLength === expectedLength || failures.push('odd length ' + expectedLength + '.  ' + buffer.byteLength);
+    }catch(e){
+        failures.push(cs + ' constructor throws when input is an ArrayBuffer object ' + e);
+    }
+});
+
+document.getElementsByTagName('p')[0].firstChild.data = failures.length ? 'FAILED\n' + failures.join('\n') : 'PASSED';
+</script>
+</body>
+</html>
