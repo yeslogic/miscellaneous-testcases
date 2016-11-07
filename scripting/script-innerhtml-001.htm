@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head>
+    <title>innerHTML and entities, SCRIPT in particular</title>
+    <style type="text/css">
+        p{white-space: pre;}
+    </style>
+</head>
+<body>
+<p>FAILED (script did not run)</p>
+<script>
+var a = true && false;
+</script>
+<div style="visibility:hidden">Hi & world</div>
+<div style="visibility:hidden">Hi &amp; world</div>
+<script type="text/javascript">
+var jsIH = document.getElementsByTagName('script')[0].innerHTML;
+var div1IH = document.getElementsByTagName('div')[0].innerHTML;
+var div2IH = document.getElementsByTagName('div')[1].innerHTML;
+
+var failures = [];
+
+jsIH.indexOf('&amp;') === -1 || failures.push('amp entity found in SCRIPT innerHTML, ampersand character expected');
+div1IH.indexOf('&amp;') > -1 || failures.push('amp entity NOT found in DIV 1 innerHTML, escaping of plain ampersand character expected');
+div2IH.indexOf('&amp;') > -1 || failures.push('amp entity NOT found in DIV 2 innerHTML');
+
+document.getElementsByTagName('p')[0].firstChild.data = failures.length === 0 ? 'PASSED' : 'FAILED - output \n' + failures.join('\n');
+</script>
+</body>
+</html>
