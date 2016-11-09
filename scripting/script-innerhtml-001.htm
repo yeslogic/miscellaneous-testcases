@@ -3,6 +3,7 @@
     <style type="text/css">
         p{white-space: pre;}
     </style>
+    <style>.foo{content:"&";}</style>
 </head>
 <body>
 <p>FAILED (script did not run)</p>
@@ -15,10 +16,12 @@ var a = true && false;
 var jsIH = document.getElementsByTagName('script')[0].innerHTML;
 var div1IH = document.getElementsByTagName('div')[0].innerHTML;
 var div2IH = document.getElementsByTagName('div')[1].innerHTML;
+var style1IH = document.getElementsByTagName('style')[1].innerHTML;
 
 var failures = [];
 
 jsIH.indexOf('&amp;') === -1 || failures.push('amp entity found in SCRIPT innerHTML, ampersand character expected');
+style1IH.indexOf('&amp;') === -1 || failures.push('amp entity found in STYLE 1 innerHTML, ampersand character expected');
 div1IH.indexOf('&amp;') > -1 || failures.push('amp entity NOT found in DIV 1 innerHTML, escaping of plain ampersand character expected');
 div2IH.indexOf('&amp;') > -1 || failures.push('amp entity NOT found in DIV 2 innerHTML');
 
