@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html><head>
+<title>floating DT, borders on subsequent elements with overflow:auto</title>
+<link rel="help" href="http://www.princexml.com/forum/topic/3517/block-borders-do-not-respect-floated-dt">
+<style>
+    dt{
+        float:left;
+        width: 25%;
+    }
+    dt span{
+        color: grey;
+    }
+    div{
+        border: 3px solid black;
+        border-style: solid;
+        overflow: auto; /* remove this and web browsers render the DIV's border like Prince does!?! */
+    }
+</style>
+</head>
+<body>
+
+    <dl>
+        <dt>
+            <span>
+                This is filler text. This is filler text.
+                This is filler text. This is filler text.
+                This is filler text. This is filler text.
+                This is filler text. This is filler text.
+                This is filler text. This is filler text.
+                This is filler text. This is filler text.
+                This is filler text. This is filler text.
+                This is filler text. This is filler text.
+                This is filler text. This is filler text.
+                This is filler text. This is filler text.
+                This is filler text. This is filler text.
+                This is filler text. This is filler text.
+            </span>
+        </dt>
+        <dd>&nbsp;</dd>
+    </dl>
+    <div>This text should have a black border. The border should <b>not</b> extend into the paragraph to the left of this one.</div>
+
+
+</body>
+</html>
