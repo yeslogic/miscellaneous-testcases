@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><title>array.join() with undefined</title></head>
+<body>
+<p>FAILED (script did not run)</p>
+<script>
+var p = document.getElementsByTagName('p')[0];
+var inputs = ['l', '1x', '001', '10.00'], failures = [];
+
+for(var i = 0; i < inputs.length; i++){
+    var ar = [];
+    ar[inputs[i]] = 'foo';
+    ar.length === 0 || failures.push('Setting array["'+ inputs[i] +'"] increased array.length');
+}
+
+
+p.firstChild.textContent = failures.length === 0 ? 'PASSED' : 'FAILED - ' + failures;
+</script>
+
+</body>
+</html>
