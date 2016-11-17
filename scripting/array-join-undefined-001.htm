@@ -1,0 +1,13 @@
+<!DOCTYPE html><html><head><title>array.join() with undefined</title></head>
+<body>
+<p>FAILED (script did not run)</p>
+<script>
+var p = document.getElementsByTagName('p')[0];
+var str1 = [1,2,3].join();
+var str2 = [1,2,3].join(void(0));
+var passed = str1 === str2 && str1 === '1,2,3';
+p.firstChild.textContent = passed ? 'PASSED' : 'FAILED - got ' + str1 + ' ' + str2;
+</script>
+
+</body>
+</html>
