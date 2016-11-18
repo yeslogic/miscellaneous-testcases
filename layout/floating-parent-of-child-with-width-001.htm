@@ -1,0 +1,69 @@
+<html>
+<head><title>Floating parent of child with explicit dimension not shrinking enough</title>
+	<link rel="help" href="http://www.princexml.com/forum/topic/3521/strange-interaction-with-floats-and-borders">
+<style>
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	body {
+		background-color: #333;
+		height: 297mm;
+		margin: 0;
+		padding: 0;
+		width: 210mm;
+	}
+
+	.page {
+		background-color: white;
+		height: 100%;
+		margin: 0 0;
+		width: 100%;
+	}
+
+	.outer {
+		float: left;
+	}
+
+	.inner {
+		background-color: #efefef;
+		border: 10mm solid #dfdfdf;
+		height: 2em;
+		width: 42mm; /* 5 boxes á 42mm should fit next to each other on a 210mm wide page.. */
+	}
+
+	@page {
+		size: 210mm 297mm;
+		margin: 0;
+		padding: 0;
+	}
+</style>
+</head>
+<body>
+	<div class="page">
+		<div style="clear:both; height: 100px; width:100%; padding: 50px">You should see five numbers on one line, inside one grey strip from page edge to edge</div>
+		<div class="outer">
+			<div class="inner">1
+			</div>
+		</div>
+		<div class="outer">
+			<div class="inner">2
+			</div>
+		</div>
+		<div class="outer">
+			<div class="inner">3
+			</div>
+		</div>
+		<div class="outer">
+			<div class="inner">4
+			</div>
+		</div>
+		<div class="outer">
+			<div class="inner">5
+			</div>
+		</div>
+	</div>
+</body>
+</html>
