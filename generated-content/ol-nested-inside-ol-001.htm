@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html><head>
+    <title>Nesting OL directly inside OL should not increment subsequent LI elements</title>
+<style>
+li{list-style-type: none}
+li.numbered{list-style-type: inherit;}
+</style>
+</head>
+<body>
+<p>You should see "2." twice below</p>
+<ol>
+   <li>
+       <ol>
+          <li></li>
+          <li></li>
+       </ol>
+   </li>
+   <li class="numbered">&nbsp;</li>
+</ol>
+
+<ol>
+   <li></li>
+   <ol>
+      <li></li>
+      <li></li>
+   </ol>
+   <li class="numbered">&nbsp;</li>
+</ol>
+
+
+</body>
+</html>
