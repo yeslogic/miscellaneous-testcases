@@ -1,0 +1,22 @@
+<!DOCTYPE html><html>
+<head>
+    <title>RegExp back reference and case sensitivity</title>
+    <style>p{white-space: pre}</style>
+</head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <script>
+        var failures = [];
+        /(A)\1/.test('AA') || failures.push('Simple back reference fails');
+        /(A)\1/i.test('aa') || failures.push('Case insensitive back reference 1 fails');
+        /(a)\1/i.test('Aa') || failures.push('Case insensitive back reference 2 fails');
+        /(a)\1/i.test('aA') || failures.push('Case insensitive back reference 3 fails');
+        /(a)\1/i.test('AA') || failures.push('Case insensitive back reference 4 fails');
+        !/(A)\1/.test('aa') || failures.push('Case sensitive back reference 1 fails');
+        !/(a)\1/.test('Aa') || failures.push('Case sensitive back reference 2 fails');
+        !/(a)\1/.test('aA') || failures.push('Case sensitive back reference 3 fails');
+        !/(a)\1/.test('AA') || failures.push('Case sensitive back reference 4 fails');
+        document.getElementsByTagName('p')[0].firstChild.data = failures.length === 0 ? 'PASSED' : 'FAILED - \n ' + failures.join('\n ');
+    </script>
+</body>
+</html>
