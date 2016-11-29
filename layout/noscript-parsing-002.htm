@@ -1,0 +1,19 @@
+<!DOCTYPE html><html>
+<head><title>NOSCRIPT should obey CSS setting display:none even when JS is disabled</title>
+<style>
+    div{
+        background: red; height: 5em; width: 5em
+    }
+    noscript{display: none}
+</style>
+</head>
+<body>
+    <p>You should see nothing below:</p>
+    <noscript>
+        <div></div>
+    </noscript>
+    <script>
+        document.getElementsByTagName('p')[0].firstChild.data = 'FAILED - scripting is enabled. Script should be *dis*abled for this test.'; // that's unusual.. :)
+    </script>
+</body>
+</html>

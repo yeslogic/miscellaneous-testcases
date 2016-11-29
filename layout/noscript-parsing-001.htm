@@ -1,0 +1,16 @@
+<!DOCTYPE html><html>
+<head><title>NOSCRIPT content should be parsed as markup</title>
+<style>
+    div{background: green; height: 5em; width: 5em}
+</style>
+</head>
+<body>
+    <p>You should see a green block below, no code:</p>
+    <noscript>
+        <div></div>
+    </noscript>
+    <script>
+        document.getElementsByTagName('p')[0].firstChild.data = 'FAILED - scripting is enabled. Script should be *dis*abled for this test.'; // that's unusual.. :)
+    </script>
+</body>
+</html>
