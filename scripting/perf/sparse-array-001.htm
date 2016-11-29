@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><title></title></head>
+<body>
+<p>FAILED (script did not run)</p>
+<script>
+var p = document.getElementsByTagName('p')[0];
+p.firstChild.textContent = 'Running..';
+var start = Date.now();
+for(var i = 0; i < 10000; i++){
+    var myarr = new Array();
+    myarr[Math.pow(2,16)-2]='hi';
+    myarr[Math.pow(2,16)-2]
+
+}
+var end = Date.now();
+p.firstChild.textContent = 'Done. ' + (end - start) + 'ms';
+</script>
+
+</body>
+</html>
