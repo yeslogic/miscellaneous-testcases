@@ -1,0 +1,12 @@
+<!DOCTYPE html><html>
+<head><title>NOSCRIPT rendering should depend on scripting being enabled</title></head>
+<body>
+    <p>You should see the text "Hello world" below:</p>
+    <noscript>
+        Hello world
+    </noscript>
+    <script>
+        document.getElementsByTagName('p')[0].firstChild.data = 'You should NOT see any text below:'
+    </script>
+</body>
+</html>

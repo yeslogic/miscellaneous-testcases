@@ -1,0 +1,16 @@
+<!DOCTYPE html><html>
+<head><title>Building an array of 4 million strings</title></head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <script>
+        document.getElementsByTagName('p')[0].firstChild.data = 'Please wait, test running..'; // not that Prince should ever render that..
+        var ar = [];
+        var start = Date.now();
+        for(var i = 0; i <= 3999999; i++){
+            ar.push('0x' + i.toString(16));
+        }
+        var duration = Date.now() - start;
+        document.getElementsByTagName('p')[0].firstChild.data = 'Build an array of ' + ar.length + ' strings in ' + duration + 'ms.'
+    </script>
+</body>
+</html>
