@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html><head><title>Right Shift operator, second operand 32</title>
+<style type="text/css">p{white-space:pre}</style>
+</head>
+
+<body>
+	<p>FAILED (script did not run)</p>
+
+<script>
+var failures = [];
+//code
+2 >> 32 === 2 || failures.push('2 >> 32 outputs ' + (2 >> 32));
+3 >> 32 === 3 || failures.push('3 >> 32 outputs ' + (3 >> 32));
+4 >> 32 === 4 || failures.push('4 >> 32 outputs ' + (4 >> 32));
+2 >>> 32 === 2 || failures.push('2 >>> 32 outputs ' + (2 >>> 32));
+3 >>> 32 === 3 || failures.push('3 >>> 32 outputs ' + (3 >>> 32));
+4 >>> 32 === 4 || failures.push('4 >>> 32 outputs ' + (4 >>> 32));
+document.getElementsByTagName('p')[0].firstChild.data = failures.length ? 'FAILED - \n' + failures.join('\n') : 'PASSED';
+
+</script>
+</body></html>
