@@ -1,0 +1,17 @@
+<!DOCTYPE html><html>
+<head><title>Error object name property</title></head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <script>
+        var failures = [];
+        RangeError.name === 'RangeError' || failures.push('RangeError.name is not "RangeError", it is ' + RangeError.name);
+        try{
+            throw new RangeError();
+        }catch(e){
+            e.name === 'RangeError' || failures.push('RangeError instance .name is not "RangeError", is ' + e.name);
+        }
+
+        document.getElementsByTagName('p')[0].firstChild.data = failures.length === 0 ? 'PASSED' : 'FAILED - ' + failures.join('\n');
+    </script>
+</body>
+</html>
