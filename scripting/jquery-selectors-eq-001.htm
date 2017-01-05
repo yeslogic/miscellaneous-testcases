@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html><head><title>jQuery :eq(n) selector</title>
+<script src="../support/libraries/jquery-3.1.1.js"></script>
+
+</head>
+
+<body>
+  <p>FAILED (script did not run)</p>
+
+  <div id="example1" style="visibility: hidden;">Lorem <em>ipsum</em>. Lorem <em>ipsum</em>. Lorem <em>ipsum</em>.</div>
+
+  <script>
+  var failures = [];
+  var seed = [1], matches = [];
+  var fn = function( matchIndexes, length, argument ) {
+      return [ argument < 0 ? argument + length : argument ];
+    }
+  var closure = function(argument) {
+    return function( seed, matches ) {
+      var j,
+        matchIndexes = fn( [], seed.length, argument ),
+        i = matchIndexes.length;
+
+      // Match elements found at the specified indexes
+      while ( i-- ) {
+        if ( seed[ (j = matchIndexes[i]) ] ) {
+          seed[j] = !(matches[j] = seed[j]);
+        }
+      }
+    }
+  }
+
+  var matcher = closure(0);
+  matcher(seed, matches);
+
+  matches[0] === 1 || failures.push('unexpected result from code picking entry in array');
+
+  function toSelector( tokens ) {
+    var i = 0,
+      len = tokens.length,
+      selector = "";
+    for ( ; i < len; i++ ) {
+      selector += tokens[i].value;
+    }
+    console.log(selector)
+    return selector;
+  }
+  var tokens = [{"value":" ","type":" "},{"value":"em","type":"TAG","matches":["em"]},{"value":":eq(2)","type":"PSEUDO","matches":["eq","2"]}];
+  var i = 3;
+  var result = toSelector(tokens.slice( 0, i - 1 ).concat({ value: tokens[ i - 2 ].type === " " ? "*" : "" }));
+  result === ' em' || failures.push('unexpected toSelector() output - ' + result);
+
+  $('p:eq(0)')[0] === document.getElementsByTagName('p')[0] || failures.push('P not found');
+  $('#example1 em').length === 3 || failures.push('3 EMs not found');
+  $('#example1 em:eq(0)').length === 1 || failures.push('EM eq(0) not found');
+  $('#example1 em:eq(1)').length === 1 || failures.push('EM eq(1) not found');
+  $('#example1 em:eq(2)').length === 1 || failures.push('EM eq(2) not found');
+  document.getElementsByTagName('p')[0].firstChild.data = failures.length ? 'FAILED - ' + failures : 'PASSED';
+  </script>
+</body></html>
