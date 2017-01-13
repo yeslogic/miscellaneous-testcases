@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="help" href="http://www.princexml.com/forum/topic/3552/page-break-issue-with-svg-nested-in-div" />
+<head>
+    <title>SVG nested in DIV causes unexpected page break</title>
+    <style type="text/css">
+    /*<![CDATA[*/
+    @page {
+        size: letter;
+        margin: 27pt 35pt 27pt 35pt;
+    }
+
+    p{page-break-after: always;}
+
+    #div1, #div3 {
+        height: 20px;
+        background: blue;
+    }
+
+    #div2, #div4 {
+        background: rgb(0,128,0);
+        overflow: hidden;
+        position: relative;
+        height: 718pt;
+    }
+    /*]]>*/
+    </style>
+</head>
+<body>
+    <p>The next two pages should look identical</p>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0pt" y="0pt" viewBox="0 0 542 718" enable-background="new 0 0 542 718" xml:space="preserve" width="100%" height="718pt">
+            <rect fill="rgb(0,128,0)" width="542" height="718"/>
+        </svg>
+    </div>
+</body>
+</html>

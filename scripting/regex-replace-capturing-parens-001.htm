@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html><head><title>regex $1 inserting undefined breaks tag+pseudo selectors in jQuery</title></head>
+
+<body>
+  <p>FAILED (script did not run)</p>
+
+<script>
+  var failures = [];
+  var str = ' em';
+  var rtrim = /^[\x20\t\r\n\f]+|((?:^|[^\\])(?:\\.)*)[\x20\t\r\n\f]+$/g;
+  var out = str.replace(rtrim, "$1");
+  out === 'em' || failures.push('unexpected result from regex replace: ' + out);
+
+  document.getElementsByTagName('p')[0].firstChild.data = failures.length ? 'FAILED - ' + failures : 'PASSED';
+</script>
+</body></html>
