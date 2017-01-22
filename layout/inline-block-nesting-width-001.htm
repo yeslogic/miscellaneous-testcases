@@ -1,0 +1,26 @@
+<!DOCTYPE html><html>
+<head>
+  <title>Nested inline blocks and width calculations</title>
+  <link rel="help" href="http://www.princexml.com/forum/topic/3558/inline-block-and-100-width">
+  <style>
+    span {
+        display: inline-block;
+    }
+    span span {
+        border: 1px solid blue;
+        width: 100%;
+        display: inline-block;
+    }
+    .block span span {
+        display: block;
+    }
+  </style>
+</head>
+<body>
+    <p>The two blue boxes below should be equal width</p>
+
+    <p class="inline">&nbsp;<span><span>&nbsp;&nbsp;&nbsp;</span></span></p>
+
+    <p class="block">&nbsp;<span><span>&nbsp;&nbsp;&nbsp;</span></span></p>
+</body>
+</html>
