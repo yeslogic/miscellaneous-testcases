@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html><head><title>typeof null</title></head>
+
+<body>
+	<p>FAILED (script did not run)</p>
+
+<script>
+var failures = [];
+typeof null === 'object' || failures.push('typeof null returns ' + (typeof null) + ', should return "object"');
+document.getElementsByTagName('p')[0].firstChild.data = failures.length ? 'FAILED - ' + failures : 'PASSED';
+</script>
+</body></html>
