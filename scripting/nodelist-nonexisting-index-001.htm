@@ -1,0 +1,14 @@
+<!DOCTYPE html><html>
+<head>
+    <title>referencing non-existing node from node list</title>
+    <link rel="help" href="http://www.princexml.com/forum/topic/3322/prince-failing-to-load-common-js-libraries">
+</head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <script>
+        var elms = document.getElementsByTagName('ul');
+        var passed = elms[0] === undefined;
+        document.getElementsByTagName('p')[0].firstChild.data = passed ? 'PASSED' : 'FAILED - got ' + elms[0];
+    </script>
+</body>
+</html>
