@@ -1,0 +1,36 @@
+<!DOCTYPE html><html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>splitting text nodes with Japanese UTF-8 content （日本語）</title>
+    <style type="text/css">
+        body{color: black}
+        .test{font-size: 5em}
+        .second{color: blue;}
+        .third{color: green;}
+    </style>
+</head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <p class="test">小辺路</p>
+    <script>
+        var failures = [];
+        var ps = document.getElementsByTagName('p');
+        var textNode = ps[1].firstChild;
+        var origString = textNode.data;
+        var secondPart = textNode.splitText(1);
+        var thirdPart = secondPart.splitText(1);
+
+        ps[1].childNodes.length === 3 || failures.push('Number of child nodes in P is incorrect - expected 3, got ' + ps[1].childNodes.length);
+        textNode.data === '小' || failures.push('Unexpected data in original node: ' + textNode.data);
+        secondPart.data === '辺' || failures.push('Wrong data, second text node: ' + secondPart.data);
+        thirdPart.data === '路' || failures.push('Wrong data, third text node: ' + thirdPart.data);
+        var span = ps[1].appendChild(document.createElement('span'));
+        span.appendChild(secondPart);
+        span.className = "second";
+        span = ps[1].appendChild(document.createElement('span'));
+        span.appendChild(thirdPart);
+        span.className = "third";
+        ps[0].firstChild.data = failures.length === 0 ? 'PASSED if you see three Japanese characters below, one black, one blue, one green' : 'FAILED - ' + failures.join('\n');
+    </script>
+</body>
+</html>
