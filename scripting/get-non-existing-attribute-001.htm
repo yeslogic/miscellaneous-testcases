@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html><head><title>elem.getAttribute('does_not_exist')</title>
+<style type="text/css">p{white-space:pre}</style>
+</head>
+
+<body>
+	<p>FAILED (script did not run)</p>
+
+<script>
+var failures = [];
+//code
+document.getElementsByTagName('p')[0].getAttribute('does_not_exist') === '' || failures.push('getAttribute() should return empty string for non-existent');
+document.getElementsByTagName('script')[0].getAttribute('src') === '' || failures.push('getAttribute() should return empty string for non-set');
+
+document.getElementsByTagName('p')[0].firstChild.data = failures.length ? 'FAILED - \n' + failures.join('\n') : 'PASSED';
+</script>
+</body></html>
