@@ -1,0 +1,34 @@
+<!DOCTYPE html><html>
+<head><title>splitting text nodes</title></head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <p style="visibility:hidden">The second word gets special treatment</p>
+    <script>
+        var failures = [];
+        var ps = document.getElementsByTagName('p');
+        var textNode = ps[1].firstChild;
+        var origString = textNode.data;
+        var secondPart = textNode.splitText(4);
+        var thirdPart = secondPart.splitText(6);
+
+        textNode.parentNode === ps[1] || failures.push('The node that was split must remain in the DOM');
+        secondPart.parentNode === ps[1] || failures.push('The new node returned from splitText() must remain in the DOM');
+        ps[1].childNodes.length === 3 || failures.push('Number of child nodes in P is incorrect - expected 3, got ' + ps[1].childNodes.length);
+        secondPart.data === 'second' || failures.push('Wrong data, second text node: ' + secondPart.data);
+        textNode.data === 'The ' || failures.push('Wrong data, "old" text node: ' + textNode.data);
+        // on normalize() the second and third text nodes become orphans
+        // they live on but are not *in* the DOM anymore
+        if (ps[1].normalize) {
+            ps[1].normalize();
+            ps[1].childNodes.length === 1 || failures.push('Number of child nodes in P is incorrect - expected 1, got ' + ps[1].childNodes.length);
+            secondPart.data === 'second' || failures.push('Wrong data, second text node: ' + secondPart.data);
+            secondPart.parentNode === null || failures.push('New textNode has unexpected .parentNode after normalize: ' + secondPart.parentNode);
+            textNode.parentNode === ps[1] || failures.push('Original node was detatched too');
+            textNode.data === origString || failures.push('Original string changed during split/normalize roundtrip')
+        } else {
+            failures.push('normalize method is not supported');
+        }
+        ps[0].firstChild.data = failures.length === 0 ? 'PASSED' : 'FAILED - ' + failures.join('\n');
+    </script>
+</body>
+</html>
