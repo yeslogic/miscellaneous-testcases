@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head><title>document.implementation.createDocument</title>
+<link rel="help" href="http://www.princexml.com/forum/topic/3588/openlayers-and-prince">
+</head>
+
+<body>
+	<p>FAILED (script did not run)</p>
+
+<script>
+var failures = [];
+try{
+  var doc = document.implementation.createDocument ('http://www.w3.org/1999/xhtml', 'html', null);
+  var body = doc.createElement('body');
+  body.setAttribute('id', 'abc');
+  doc.documentElement.appendChild(body);
+}catch(err) {
+  failures.push('error during test: ' + err)
+}
+doc.getElementById('abc') === body || failures.push('getElementById did not find newly added elm'); 
+
+document.getElementsByTagName('p')[0].firstChild.data = failures.length ? 'FAILED - ' + failures : 'PASSED';
+</script>
+</body></html>
