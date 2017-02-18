@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html><head><title>Function bind()</title>
+<style>p{white-space: pre}</style>
+</head>
+
+<body>
+	<p>FAILED (script did not run)</p>
+
+<script>
+var failures = [];
+var f = function(){return this;};
+f.bind || failures.push('No function.bind() implementation');
+if (f.bind) {
+	var f2 = f.bind(document.body);
+	f2() === document.body || failures.push('Unexpected return value from bound function');
+}
+document.getElementsByTagName('p')[0].firstChild.data = failures.length ? 'FAILED - ' + failures.join('\n') : 'PASSED';
+</script>
+</body></html>
