@@ -8,9 +8,8 @@
 
 <script>
 var failures = [];
-//code
-document.getElementsByTagName('p')[0].getAttribute('does_not_exist') === '' || failures.push('getAttribute() should return empty string for non-existent');
-document.getElementsByTagName('script')[0].getAttribute('src') === '' || failures.push('getAttribute() should return empty string for non-set');
+document.getElementsByTagName('p')[0].getAttribute('does_not_exist') === null || failures.push('getAttribute() should return null for non-existent');
+document.getElementsByTagName('script')[0].getAttribute('src') === null || failures.push('getAttribute() should return null for non-set');
 
 document.getElementsByTagName('p')[0].firstChild.data = failures.length ? 'FAILED - \n' + failures.join('\n') : 'PASSED';
 </script>
