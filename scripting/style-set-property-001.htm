@@ -1,0 +1,22 @@
+<!DOCTYPE html><html>
+<head><title>style setProperty and style.removeProperty</title></head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <p style="font-weight: bold"></p>
+    <script>
+        var failures = [];
+        document.body.style.setProperty || failures.push('style.setProperty not supported');
+        document.body.style.removeProperty || failures.push('style.removeProperty not supported');
+        if(!failures.length) {
+            var p2 = document.getElementsByTagName('p')[1];
+            p2.style.setProperty('color', 'green');
+            p2.style.removeProperty('font-weight');
+            p2.textContent = 'This text should be green and not bold';
+            p2.style.color || failures.push('Expected style.color to be set, now: ' + p2.style.color);
+            !p2.style.fontWeight || failures.push('Expected style.fontWeight to be unset, now: ' + p2.style.fontWeight);
+        }
+        document.getElementsByTagName('p')[0].firstChild.data = failures.length === 0 ? 'PASSED' : 'FAILED - ' +
+            failures.join('\n');
+    </script>
+</body>
+</html>
