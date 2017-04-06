@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html><head><title>left shift by 15 (TypeKit)</title></head>
+
+<body>
+	<p>FAILED (script did not run)</p>
+
+<script>
+var failures = [];
+var c = 109853387296;
+c << 15 === -720371712 || failures.push('Unexpected result from left shift: ' + (c << 15));
+c >>> 16 === 37829 || failures.push('Unexpected result from right shift: ' + c >>> 16);
+
+document.getElementsByTagName('p')[0].firstChild.data = failures.length ? 'FAILED - ' + failures : 'PASSED';
+</script>
+</body></html>
