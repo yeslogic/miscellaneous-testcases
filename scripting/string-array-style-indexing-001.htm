@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html><head><title>Array-style string indexing</title>
+<link rel="help" href="http://www.princexml.com/forum/topic/3642/javascript-string-character-access-returns-undefined">
+</head>
+
+<body>
+	<p>FAILED (script did not run)</p>
+
+<script>
+var failures = [];
+var str = 'ABCabc';
+str[0] === 'A' || failures.push('str indexing seems unsupported');
+var testArray = [].slice.apply(str, [1, 3]);
+testArray && testArray.length === 2 || failures.push('Can not apply array slice() to string'); 
+document.getElementsByTagName('p')[0].firstChild.data = failures.length ? 'FAILED - ' + failures : 'PASSED';
+</script>
+</body></html>

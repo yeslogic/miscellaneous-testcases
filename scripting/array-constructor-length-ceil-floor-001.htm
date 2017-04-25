@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html><head><title>array constructor with Math.ceil()/floor() length argument</title></head>
+
+<body>
+	<p>FAILED (script did not run)</p>
+
+<script>
+var failures = [];
+var ar1 = Array(5);
+var ar2 = new Array(10);
+var ar3 = Array(Math.ceil(10.5));
+var ar4 = new Array(Math.floor(10.5));
+
+ar1.length === 5 || failures.push('ar1.length: expected 5, got ' + ar1.length);
+ar2.length === 10 || failures.push('ar2.length: expected 5, got ' + ar2.length);
+ar3.length === 11 || failures.push('ar3.length: expected 11, got ' + ar3.length);
+ar4.length === 10 || failures.push('ar4.length: expected 10, got ' + ar4.length);
+
+document.getElementsByTagName('p')[0].firstChild.data = failures.length ? 'FAILED - ' + failures : 'PASSED';
+</script>
+</body></html>

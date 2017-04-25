@@ -1,4 +1,5 @@
 <!DOCTYPE html><html>
+<style>p{white-space: pre}</style>
 <head><title>Object.getOwnPropertyDescriptor</title></head>
 <body>
     <p>FAILED (script did not run)</p>
@@ -20,7 +21,7 @@
             Object.getOwnPropertyDescriptor(ancestor, 'foo') === undefined || failures.push('should not traverse prototype chain for properties');
 
         }
-        document.getElementsByTagName('p')[0].firstChild.data = failures.length === 0 ? 'PASSED' : 'FAILED - ' + failures;
+        document.getElementsByTagName('p')[0].firstChild.data = failures.length === 0 ? 'PASSED' : 'FAILED - ' + failures.join('\n');
     </script>
 </body>
 </html>
