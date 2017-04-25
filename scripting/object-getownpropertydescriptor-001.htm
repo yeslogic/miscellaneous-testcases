@@ -1,0 +1,26 @@
+<!DOCTYPE html><html>
+<head><title>Object.getOwnPropertyDescriptor</title></head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <script>
+        var failures = [];
+        Object.getOwnPropertyDescriptor || failures.push('Method is not defined');
+        if(Object.getOwnPropertyDescriptor) {
+            var desc = Object.getOwnPropertyDescriptor({foo: 1}, 'foo');
+            desc.value === 1 || failures.push('Property descriptor value unexpected: ' + desc.value);
+            desc.writable === true || failures.push('Property descriptor writable unexpected: ' + desc.writable);
+            desc.enumerable === true || failures.push('Property descriptor enumerable unexpected: ' + desc.enumerable);
+            desc.configurable === true || failures.push('Property descriptor configurable unexpected: ' + desc.configurable);
+            // Corners
+            Object.getOwnPropertyDescriptor(Object, 'foo') === undefined || failures.push('non-existing property should return undefined for descriptor');
+            var ancestor = new Function();
+            ancestor.prototype.foo = 1;
+            var inheritor = new ancestor();
+            Object.getOwnPropertyDescriptor(inheritor, 'foo') === undefined || failures.push('should not traverse __proto__ chain for properties');
+            Object.getOwnPropertyDescriptor(ancestor, 'foo') === undefined || failures.push('should not traverse prototype chain for properties');
+
+        }
+        document.getElementsByTagName('p')[0].firstChild.data = failures.length === 0 ? 'PASSED' : 'FAILED - ' + failures;
+    </script>
+</body>
+</html>
