@@ -1,0 +1,30 @@
+<!DOCTYPE html><html>
+<head><title>Setting many numerical properties on object, array push/shift</title></head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <script>
+        // generate some test data
+        var testData = [], i = 0, len;
+        for(; i < 50000; i++) {
+            testData.push(parseInt(String(i * 12345678).substr(-7)));
+        }
+        var start = Date.now();
+        var table = {}, prop, j, list;
+        for(i = 0, len = testData.length; i < len; i++) {
+            prop = testData[i];
+            if(table[prop] === void 0) {
+                table[prop] = [];
+            }
+            list = table[prop];
+            for(j = i; j < 0; j--) {
+                list.push(12345);
+            }
+            while(list.length > 0 && j < 100) {
+                list.shift();
+                j++;
+            }
+        }
+        document.getElementsByTagName('p')[0].firstChild.data = 'Loop completed in ' + (Date.now() - start) + 'ms';
+    </script>
+</body>
+</html>
