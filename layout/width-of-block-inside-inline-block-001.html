@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head><title>Simple KaTeX test page</title>
+
+<style type="text/css">
+
+
+.katex .vlist {
+  display: inline-block;
+}
+.katex .vlist > span {
+  display: block;
+  height: 0;
+  position: relative;
+}
+.katex .vlist > span > span {
+  display: inline-block;
+}
+.katex .sqrt .sqrt-line {
+  width: 100%;
+}
+.katex .sqrt .sqrt-line:before {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  content: "";
+  display: block;
+}
+.katex .sqrt .sqrt-line:after {
+  border-bottom-style: solid;
+  border-bottom-width: 0.04em;
+  content: "";
+  display: block;
+  margin-top: -1px;
+}
+
+</style>
+</head><body>
+  <p>The line below should be as long as the sentence, no longer:</p>
+	<p>
+  <span class="katex">
+    <span class="sqrt">
+      <span class="vlist">
+        <span class="mord mathit">This is filler text</span>
+        <span style="top:-0.8333889999999999em" class=""><span class="sqrt-line"></span></span>
+      </span>
+    </span>
+  </span>
+  </p>
+
+<script>
+</script>
+
+</body>
