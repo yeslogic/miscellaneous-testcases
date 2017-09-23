@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Column Span all Div - Margin Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="help" href="http://www.princexml.com/forum/topic/3742/column-span-margin-bug">
+    <style>
+
+    @page {
+      size: 210mm 297mm;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: normal;
+      font-size: 8.5pt;
+      line-height: 12pt;
+      background: #fff;
+      color: #fff;
+    }
+
+    section.level-1 {
+      column-count: 2;
+      column-fill: auto;
+      column-gap: 6mm;
+    }
+
+    section.level-2 {
+      /* this causes also a wrong top-margin of div.column-span-all: */
+      margin-top: 30mm;
+      /*border: 1px solid black;*/
+    }
+
+    .column-span-all {
+      column-span: all;
+      height: 1cm;
+      border: 1px solid black;
+      color: #000;
+    }
+
+    </style>
+  </head>
+  <body>
+    <section class="level-1">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab perferendis, doloribus porro rem dicta reprehenderit aliquam quis, qui assumenda provident ullam nobis.</p>
+      <section class="level-2">
+        <p>Starting section with margin-top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab perferendis, doloribus porro rem dicta reprehenderit aliquam quis, qui assumenda provident ullam nobis. Vel pariatur expedita nihil doloremque labore illo, alias vero facilis, voluptates voluptatem cum officia obcaecati soluta nostrum quaerat expedita, suscipit earum doloribus illo velit aspernatur molestiae, iste blanditiis perspiciatis. Optio expedita, eum adipisci.</p>
+        <p style="color: #000">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab perferendis, doloribus porro rem dicta reprehenderit aliquam quis, qui assumenda provident ullam nobis. Vel pariatur expedita nihil doloremque labore illo, alias vero facilis, rem natus fuga temporibus aliquam aliquid placeat quos minima architecto atque quibusdam consequatur nesciunt accusantium eligendi praesentium nulla. Incidunt architecto sint.</p>
+        <div class="column-span-all">There should be no gap between the text block on the right side above and this box.</div>
+        <p>Neque culpa iusto exercitationem corporis optio nesciunt accusamus saepe mollitia laborum dolor numquam officiis recusandae doloremque, rerum dicta deserunt unde, excepturi animi eligendi sit. Voluptates voluptatem cum officia obcaecati soluta nostrum quaerat expedita, suscipit earum doloribus illo velit aspernatur molestiae, iste blanditiis perspiciatis. Optio expedita, eum adipisci.</p>
+      </section>
+    </section>
+  </body>
+</html>

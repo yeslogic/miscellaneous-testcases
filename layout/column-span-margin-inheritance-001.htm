@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Unexpected margin inheritance for column-span: all element</title>
+    <meta charset="UTF-8">
+    <link rel="help" href="http://www.princexml.com/forum/topic/3742/column-span-margin-bug">
+    <style type="text/css" media="all">
+      body {
+        background: #fff;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        margin: 0;
+        column-span: all;
+      }
+
+      article > section {
+        column-count: 2;
+      }
+
+      section.level-1 {
+        margin-bottom: 10mm;
+      }
+
+      section.level-1 > div {
+        margin-bottom: 50mm;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <article>
+      <section class="level-1">
+        <div>
+          <h1>There should be no gap between this headline and the text</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget semper urna, sit amet pretium nulla. Pellentesque efficitur odio quis nisi consequat, ut pretium metus maximus. Aenean diam neque, blandit sed purus ut, pretium mattis neque. Phasellus at tempus risus, nec tristique orci. Fusce vitae ex in diam auctor pharetra. Maecenas accumsan nunc non tristique lobortis. Praesent quis pretium odio, vitae tristique eros. Nunc erat arcu, suscipit non lacinia sed, pulvinar sit amet nisl. Ut iaculis velit enim, vel mollis erat finibus id. Nunc gravida id nunc vitae vulputate. Donec pellentesque vehicula neque, id rhoncus odio bibendum in. Aliquam nisi nisi, bibendum eu magna ut, dapibus sodales lorem. Duis ullamcorper tempus facilisis. Praesent feugiat, justo vel viverra vehicula, urna arcu vehicula neque, ac aliquet purus lectus ut nisl.</p>
+        </div>
+      </section>
+    </article>
+
+  </body>
+</html>
