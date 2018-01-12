@@ -1,0 +1,16 @@
+<!DOCTYPE html><html>
+<head><title></title></head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <script>
+        var passed = true;
+        var obj = {};
+        try {
+            (obj = this.document) ? obj.body.innerHTML : '';
+        }catch(e){
+            passed = false;
+        }
+        document.getElementsByTagName('p')[0].firstChild.data = passed ? 'PASSED' : 'FAILED - '
+    </script>
+</body>
+</html>

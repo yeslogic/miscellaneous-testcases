@@ -1,0 +1,21 @@
+<!DOCTYPE html><html>
+<head><title>ternary selection of property which is called as function</title></head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <script>
+    function test(num) {
+        var outcome;
+        var obj = {
+            a: function(){outcome = 'a'},
+            b: function(){outcome = 'b'}
+        };
+        var passed = false;
+        num = -1 <= num ? num : 0;
+        (0 <= num && 3 > num ? obj.b : obj.a)();
+        passed = outcome === 'b';
+        document.getElementsByTagName('p')[0].firstChild.data = passed ? 'PASSED' : 'FAILED - '
+    }
+    test(1);
+    </script>
+</body>
+</html>
