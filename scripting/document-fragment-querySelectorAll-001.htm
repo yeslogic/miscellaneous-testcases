@@ -1,0 +1,15 @@
+<!DOCTYPE html><html>
+<head><title>document fragment querySelectorAll()</title>
+<!-- this test is derived from Angular demo in forum thread: -->
+<link rel="help" href="http://www.princexml.com/forum/topic/3807/using-prince-with-angular-1.x">
+</head>
+<body>
+    <p>FAILED (script did not run)</p>
+    <script>
+        var docFrag = document.createDocumentFragment();
+        docFrag.appendChild(document.createElement('div'));
+        var passed = docFrag.querySelectorAll && docFrag.querySelectorAll('div').length === 1;
+        document.getElementsByTagName('p')[0].firstChild.data = passed ? 'PASSED' : 'FAILED'
+    </script>
+</body>
+</html>
