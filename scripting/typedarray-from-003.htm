@@ -19,7 +19,6 @@ var inputs = [
 
 constructors.forEach(function(cs){
     var typedArrayConstr = window[cs];
-    console.log(cs + ' ' + typedArrayConstr)
     var sourceData = inputs.shift();
     var buffer = new ArrayBuffer(sourceData.length);
     try{
