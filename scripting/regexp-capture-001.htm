@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>RegExp.$2</title>
+  </head>
+  <body>
+    <p>FAILED (script did not run)</p>
+
+<script>
+document.getElementsByTagName('p')[0].firstChild.data = 'FAILED (script did not complete)';
+var BASENAME = 'MathJax';
+var str = '/unpacked/MathJax.js?config=TeX-AMS_HTML-full';
+var namePattern = new RegExp("(^|/)"+BASENAME+"\\.js(\\?.*)?$");
+var log = [];
+console.log(str.match(namePattern))
+if (str.match(namePattern)) {
+    if(RegExp.$2 !== '?config=TeX-AMS_HTML-full') {
+      log.push('RegExp capture failed, RegExp.$2 is ' + RegExp.$2)
+    }
+} else {
+  log.push('match() failed, expected to find a match in string');
+}
+
+document.getElementsByTagName('p')[0].firstChild.data = log.length === 0 ? 'PASSED' : 'FAILED ('+log.join(', ')+')';
+
+</script>
+
+  </body>
+</html>

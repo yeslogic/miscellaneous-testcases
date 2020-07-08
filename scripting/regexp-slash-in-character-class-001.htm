@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>RegExp ] and forward slash in character class</title>
+  </head>
+  <body>
+    <p>FAILED (script did not run)</p>
+
+    <script>
+      var str = 'this is a [test]';
+      var rx = /[\]/]/
+      var passed = rx.test(str);
+      document.getElementsByTagName('p')[0].firstChild.data = passed ? 'PASSED' : 'FAILED';
+    </script>
+
+  </body>
+</html>
