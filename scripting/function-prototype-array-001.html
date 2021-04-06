@@ -1,0 +1,12 @@
+<!DOCTYPE html><html><head><title>Array as prototype</title></head>
+<body>
+<p>FAIL (script did not run)</p>
+<script>
+    function testme(){}
+    testme.prototype = [];
+    var test = new testme();
+    test.push('hello');
+    document.getElementsByTagName('p')[0].firstChild.data = test.length === 1 && test.join('') === 'hello' ? 'PASSED' : 'FAILED' ;
+</script>
+</body>
+</html>
