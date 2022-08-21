@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html><head><title>Parsing the word return as property name</title></head>
+
+<body>
+	<p>FAILED (script did not run)</p>
+
+    <script>var passed = false;</script>
+<script>
+    // does this compile?
+function test() {
+    return void(
+      a.Sb.return
+    );
+}
+
+passed = true;
+</script>
+
+<script>
+document.getElementsByTagName('p')[0].firstChild.textContent = passed ? 'PASSED' : 'FAILED';
+</script>
+</body></html>

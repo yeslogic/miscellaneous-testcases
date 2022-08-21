@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html><head><title>let variable in global scope</title></head>
+
+<body>
+	<p>FAILED (script did not run)</p>
+
+    <script>let aVariable = true;</script>
+<script>
+
+var passed = typeof aVariable === 'boolean';
+document.getElementsByTagName('p')[0].firstChild.textContent = passed ? 'PASSED' : 'FAILED';
+</script>
+</body></html>
