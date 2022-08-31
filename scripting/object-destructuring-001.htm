@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object destructuring</title>
+  </head>
+  <body>
+    <p>FAILED (script did not run)</p>
+    <script>
+      var test = {passed: true};
+      const {passed} = test;
+    </script>
+    <script>
+      document.getElementsByTagName('p')[0].firstChild.textContent = typeof passed === 'boolean' && passed === true ? 'PASSED (destructuring syntax supported)' : 'FAILED (not supported)';
+    </script>
+  </body>
+</html>

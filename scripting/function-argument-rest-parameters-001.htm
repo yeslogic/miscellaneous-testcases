@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Function argument rest</title>
+  </head>
+  <body>
+    <p>FAILED (script did not run)</p>
+    <script>
+      function testme(...args) {
+        return args[0];
+      }
+    </script>
+    <script>
+      document.getElementsByTagName('p')[0].firstChild.textContent = typeof testme === 'function' && testme(true) ? 'PASSED (rest parameter syntax supported)' : 'FAILED (not supported)';
+    </script>
+  </body>
+</html>
