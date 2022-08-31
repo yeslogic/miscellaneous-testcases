@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Default function argument values</title>
+  </head>
+  <body>
+    <p>FAILED (script did not run)</p>
+    <script>
+      function testme(passed = true) {
+        return passed;
+      }
+    </script>
+    <script>
+      document.getElementsByTagName('p')[0].firstChild.textContent = typeof testme === 'function' && testme() ? 'PASSED (default argument value syntax supported)' : 'FAILED (not supported)';
+    </script>
+  </body>
+</html>

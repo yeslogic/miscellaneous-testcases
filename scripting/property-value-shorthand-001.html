@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object property value shorthands</title>
+  </head>
+  <body>
+    <p>FAILED (script did not run)</p>
+    <script>
+      var passed = true;
+      var result = {
+        passed
+      };
+    </script>
+    <script>
+      document.getElementsByTagName('p')[0].firstChild.textContent = typeof result === 'object' && result.passed ? 'PASSED (property value shorthand supported)' : 'FAILED (not supported)';
+    </script>
+  </body>
+</html>
