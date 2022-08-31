@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Repeating regular expression matches</title>
+  </head>
+  <body>
+    <p>FAILED (script did not run)</p>
+    <script>
+      function getAmount(str) {
+        var rxResult = /^(\d+)\s*(.*)$/g.exec(str);
+        if (rxResult) {
+          return +rxResult[1];          
+        }
+      }
+
+      var a = getAmount('80ms');
+      var b = getAmount('80ms');
+      var passed = a === b && b === 80;
+      document.getElementsByTagName('p')[0].firstChild.textContent = passed ? 'PASSED' : 'FAILED';
+    </script>
+  </body>
+</html>
