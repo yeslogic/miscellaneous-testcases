@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Overriding measureText()</title>
+  </head>
+  <body>
+    <p>FAILED (script did not run)</p>
+    <script>
+      CanvasRenderingContext2D.prototype.measureText = function() {
+        return true; // not a very useful text measuring implementation..
+      }
+    </script>
+    <canvas></canvas>
+    <script>
+      var passed = document.getElementsByTagName('canvas')[0].getContext('2d').measureText('abc');
+      document.getElementsByTagName('p')[0].firstChild.textContent = typeof passed === 'boolean' && passed === true ? 'PASSED (overriding method worked)' : 'FAILED';
+    </script>
+  </body>
+</html>
