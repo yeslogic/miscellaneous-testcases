@@ -25,7 +25,7 @@ var failures = [];
 
 typeof test1('hi') === 'function' || failures.push('Test 1 returned wrong value: ' + test1('hi'));
 typeof test2('hi') === 'function' || failures.push('Test 2 returned wrong value: ' + test2('hi'));
-typeof test3('hi') === 'undefined' || failures.push('Test 3 returned wrong value: ' + test3('hi'));
+typeof test3('hi') === 'string' || failures.push('Test 3 returned wrong value: ' + test3('hi'));
 
 document.getElementsByTagName('p')[0].firstChild.data = failures.length > 0 ? 'FAILED - ' + failures : 'PASSED';
 </script>
